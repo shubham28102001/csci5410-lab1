@@ -1,8 +1,9 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const CreateNote = () => {
     const [text, setText] = useState('');
+
     const saveNote = async (e) => {
         e.preventDefault();
         try {
@@ -11,23 +12,31 @@ const CreateNote = () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({text})
-            })
+                body: JSON.stringify({ text })
+            });
         } catch (e) {
             console.log(e);
         }
     }
 
-    return(
-        <>
-            <form onSubmit={saveNote}>
-                <textarea rows="5" cols="100" value={text} onChange={(e) => setText(e.target.value)}></textarea>
-                <br></br>
-                <br></br>
-                <button type="submit" style={{'marginRight': '10px'}}>Create Note</button>
-                <button type="close"><Link to={'/'}>Close</Link></button>
+    return (
+        <div className="flex flex-col items-center min-h-screen bg-gray-100 p-4">
+            <form onSubmit={saveNote} className="bg-white p-6 rounded shadow-md w-full max-w-lg">
+                <textarea
+                    rows="5"
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
+                    className="w-full p-2 border rounded mb-4"
+                    placeholder="Write your note here..."
+                ></textarea>
+                <div className="flex justify-between">
+                    <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded mr-2">Create Note</button>
+                    <Link to={'/'}>
+                        <button type="button" className="bg-gray-500 text-white px-4 py-2 rounded">Close</button>
+                    </Link>
+                </div>
             </form>
-        </>
+        </div>
     );
 }
 
