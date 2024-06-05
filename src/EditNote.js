@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const EditNote = () => {
     const { state } = useLocation();
+    const navigate = useNavigate();
     const [text, setText] = useState('');
     const [noteId, setNoteId] = useState(state.noteId);
 
@@ -31,6 +32,7 @@ const EditNote = () => {
                 },
                 body: JSON.stringify({ noteId, text })
             });
+            navigate('/');
         } catch (e) {
             console.log(e);
         }
