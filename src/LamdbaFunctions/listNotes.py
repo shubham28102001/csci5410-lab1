@@ -8,6 +8,7 @@ table = dynamoDB.Table('csci5410-lab1')
 
 def lambda_handler(event, context):
     try:
+        # reading the table
         data = table.scan()
         notes = data.get('Items')
 

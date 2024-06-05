@@ -7,6 +7,7 @@ const EditNote = () => {
     const [text, setText] = useState('');
     const [noteId, setNoteId] = useState(state.noteId);
 
+    // function to fetch node based on noteid
     const fetchNote = async () => {
         try {
             const res = await fetch(`https://p2pcrkofe4.execute-api.us-east-1.amazonaws.com/test/viewNote?noteId=${noteId}`);
@@ -22,6 +23,7 @@ const EditNote = () => {
         // eslint-disable-next-line
     }, []);
 
+    // function to update note
     const updateNote = async (e) => {
         e.preventDefault();
         try {

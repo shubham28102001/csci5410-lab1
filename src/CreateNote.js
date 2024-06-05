@@ -5,6 +5,7 @@ const CreateNote = () => {
     const navigate = useNavigate();
     const [text, setText] = useState('');
 
+    // function to save the note
     const saveNote = async (e) => {
         e.preventDefault();
         try {

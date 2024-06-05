@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 const ListNotes = () => {
     const [notes, setNotes] = useState([]);
 
+    // function to getch all notes
     const getNotes = async () => {
         try {
             const res = await fetch('https://p2pcrkofe4.execute-api.us-east-1.amazonaws.com/test/listNotes');
@@ -14,6 +15,7 @@ const ListNotes = () => {
         }
     };
 
+    // function to delete the note based on noteid
     const deleteNote = async (noteId) => {
         try {
             await fetch('https://p2pcrkofe4.execute-api.us-east-1.amazonaws.com/test/deleteNote', {

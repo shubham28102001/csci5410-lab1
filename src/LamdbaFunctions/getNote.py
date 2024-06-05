@@ -8,10 +8,14 @@ table = dynamoDB.Table('csci5410-lab1')
 
 def lambda_handler(event, context):
     try:
+        # get noteid from query string paramater
         noteId = event['queryStringParameters']['noteId']
         
+        # deleting the record from the table
         data = table.get_item(Key={'noteId': noteId})
+        # fetching the file name
         fileName = data['Item']['fileName']
+        # getting the s3 object
         file = s3Client.get_object(Bucket=bucketName, Key=fileName)
         text = file['Body'].read().decode('utf-8')
         

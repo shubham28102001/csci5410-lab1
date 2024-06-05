@@ -10,11 +10,16 @@ table = dynamoDB.Table('csci5410-lab1')
 def lambda_handler(event, context):
     try:
         body = json.loads(event['body'])
+        # fetching note text
         text = body['text']
+        # fetching noteid
         noteId = body['noteId']
 
+        # putting item in table
         data = table.get_item(Key={'noteId': noteId})
+        # getting filename from data
         fileName = data['Item']['fileName']
+        # putting object to s3
         s3Client.put_object(Bucket=bucketName, Key=fileName, Body=text)
 
         return {
