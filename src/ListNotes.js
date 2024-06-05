@@ -31,6 +31,7 @@ const ListNotes = () => {
 
     useEffect(() => {
         getNotes();
+        // eslint-disable-next-line
     }, []);
 
     return (

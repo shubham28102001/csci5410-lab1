@@ -17,6 +17,7 @@ const EditNote = () => {
     }
     useEffect(() => {
         fetchNote();
+        // eslint-disable-next-line
     }, []);
 
     const updateNote = async (e) => {

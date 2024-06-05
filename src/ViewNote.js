@@ -17,6 +17,7 @@ const ViewNote = () => {
     }
     useEffect(() => {
         fetchNote();
+        // eslint-disable-next-line
     }, []);
 
     return(
